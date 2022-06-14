@@ -1,4 +1,5 @@
-import 'package:film_fan/screens/splash_screen/view/splash_screen.dart';
+import 'package:film_fan/screens/splash_screen/splash.dart';
+import 'package:film_fan/shared/styles/themes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,10 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
+      theme: defaultTheme,
       home: const SplashScreen(),
     );
   }

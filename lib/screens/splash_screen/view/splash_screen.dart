@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:film_fan/main.dart';
+import 'package:film_fan/screens/movies/View/movie_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         () => {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const MoviePage(),
                 ),
               )
             });
@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // SvgPicture.asset(
-          //   'assets/images/logo.svg',
+          //   'assets/images/logo2.svg',
           //   semanticsLabel: 'Acme Logo',
           // ),
           const SizedBox(
@@ -51,11 +51,11 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'POKEMON',
+                'The movie',
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               const Text(
-                'Pokedex',
+                'API',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 40,
