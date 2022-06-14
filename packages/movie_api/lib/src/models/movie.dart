@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:movie_api/src/models/json_map.dart';
 
-part 'movie_details.g.dart';
+part 'movie.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-class MovieDetails extends Equatable {
-  const MovieDetails([
+class Movie extends Equatable {
+  const Movie([
     this.id,
     this.title,
     this.posterPath,
@@ -38,11 +38,11 @@ class MovieDetails extends Equatable {
   final bool? video;
   final double? voteAverage;
 
-  /// Deserializes the given [JsonMap] into a [MovieDetail].
-  static MovieDetails fromJson(JsonMap json) => _$MovieDetailsFromJson(json);
+  /// Deserializes the given [JsonMap] into a [Movie].
+  static Movie fromJson(JsonMap json) => _$MovieFromJson(json);
 
-  /// Converts this [MovieDetail] into a [JsonMap].
-  JsonMap toJson() => _$MovieDetailsToJson(this);
+  /// Converts this [Movie] into a [JsonMap].
+  JsonMap toJson() => _$MovieToJson(this);
 
   @override
   List<Object?> get props => [

@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_details.dart';
+part of 'movie.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
+Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
       json['id'] as int?,
       json['title'] as String?,
       json['poster_path'] as String?,
@@ -23,8 +23,7 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) => MovieDetails(
       json['original_title'] as String?,
     );
 
-Map<String, dynamic> _$MovieDetailsToJson(MovieDetails instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
       'poster_path': instance.posterPath,
       'adult': instance.adult,
       'overview': instance.overview,
