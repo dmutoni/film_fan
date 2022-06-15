@@ -1,4 +1,5 @@
 import 'package:film_fan/constants/colors.dart';
+import 'package:film_fan/screens/movies/widgets/single_movie.dart';
 import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -91,8 +92,16 @@ class MoviePage extends StatelessWidget {
                 ),
               ];
             },
-            body: const TabBarView(
-                children: [Text('Movie'), Text('My favourite')]),
+            body: const TabBarView(children: [
+              SingleMovie(
+                moviePoster:
+                    'https://www.themoviedb.org/t/p/w220_and_h330_face/ekZobS8isE6mA53RAiGDG93hBxL.jpg',
+                releaseDate: '22/01/2022',
+                title: '365 days',
+                voteAverage: '21',
+              ),
+              Text('My favourite')
+            ]),
           )),
     );
   }
