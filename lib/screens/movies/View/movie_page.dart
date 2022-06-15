@@ -41,7 +41,6 @@ class _Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = context.select((MovieCubit cubit) => cubit.state.status);
-    print(status);
     final movies = context.select((MovieCubit cubit) => cubit.state.movieModel);
     switch (status) {
       case MovieStatus.initial:
@@ -52,7 +51,7 @@ class _Content extends StatelessWidget {
       case MovieStatus.loading:
         return const SizedBox(
           key: Key('loading'),
-          child: CircularProgressIndicator.adaptive(),
+          child: Center(child: CircularProgressIndicator.adaptive()),
         );
       case MovieStatus.error:
         return const Center(
@@ -120,7 +119,7 @@ class _Content extends StatelessWidget {
                           Tab(
                             icon: Row(
                               children: [
-                                Text('Favourites',
+                                Text('Favorites',
                                     style:
                                         Theme.of(context).textTheme.headline2),
                                 SizedBox(
@@ -157,7 +156,7 @@ class _Content extends StatelessWidget {
                   RenderMovies(
                     movies: movies,
                   ),
-                  const Text('My favourite')
+                  const Text('My favorite')
                 ]),
               )),
         );

@@ -1,4 +1,5 @@
 import 'package:film_fan/constants/colors.dart';
+import 'package:film_fan/screens/credits/view/credit_page.dart';
 import 'package:film_fan/screens/movie_details/cubit/movie_details_cubit.dart';
 import 'package:film_fan/screens/movie_details/widgets/movie_details_hero.dart';
 import 'package:flutter/material.dart';
@@ -37,27 +38,8 @@ class MovieDetailsView extends StatelessWidget {
 class _Content extends StatelessWidget {
   final String? id;
 
-  const _Content(
-      {Key? key,
-      this.id,
-      this.movieTitle,
-      this.moviePoster,
-      this.movieReleaseDate,
-      this.movieVoteAverage,
-      this.movieRating,
-      this.movieOverview,
-      this.movieGenres,
-      this.rating})
-      : super(key: key);
+  const _Content({Key? key, this.id}) : super(key: key);
 
-  final String? movieTitle;
-  final String? moviePoster;
-  final String? movieReleaseDate;
-  final String? movieVoteAverage;
-  final String? movieRating;
-  final String? movieOverview;
-  final List<int>? movieGenres;
-  final int? rating;
   @override
   Widget build(BuildContext context) {
     final status =
@@ -73,7 +55,7 @@ class _Content extends StatelessWidget {
       case MovieDetailsStatus.loading:
         return const SizedBox(
           key: Key('loading'),
-          child: CircularProgressIndicator.adaptive(),
+          child: Center(child: CircularProgressIndicator.adaptive()),
         );
       case MovieDetailsStatus.failure:
         return const Center(
@@ -159,6 +141,11 @@ class _Content extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Container(
+                    height: 200,
+                    padding: const EdgeInsets.all(16.0),
+                    child: CreditPage(id: movie.id),
+                  )
                 ])),
               ],
             ));
