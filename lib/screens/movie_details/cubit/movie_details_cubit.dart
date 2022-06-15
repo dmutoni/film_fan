@@ -20,6 +20,9 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
 
     try {
       final movieDetails = await _movieRepository.searchMovies(_id!);
+
+      print(movieDetails?.toJson().toString());
+
       emit(MovieDetailsState(
           status: MovieDetailsStatus.success, movieDetails: movieDetails));
     } on Exception {

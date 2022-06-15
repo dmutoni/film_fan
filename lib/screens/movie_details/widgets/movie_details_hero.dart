@@ -29,9 +29,10 @@ class MovieDetailsHero extends StatelessWidget {
                     Text(
                       name!,
                       style: Theme.of(context).textTheme.headline1,
+                      overflow: TextOverflow.visible,
                     ),
                     Text(
-                      'releaseDate: $releaseDate',
+                      'Year: ${releaseDate?.split("-")[0]}',
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ],
@@ -58,7 +59,7 @@ class MovieDetailsHero extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

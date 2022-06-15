@@ -3,6 +3,7 @@ import 'package:film_fan/screens/movie_details/cubit/movie_details_cubit.dart';
 import 'package:film_fan/screens/movie_details/widgets/movie_details_hero.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_api/movie_api.dart';
 import 'package:movie_repository/movie_repository.dart';
 
 class MovieDetailsPage extends StatelessWidget {
@@ -64,7 +65,6 @@ class _Content extends StatelessWidget {
         context.select((MovieDetailsCubit cubit) => cubit.state.status);
     final movie =
         context.select((MovieDetailsCubit cubit) => cubit.state.movieDetails);
-    print(movie);
     switch (status) {
       case MovieDetailsStatus.initial:
         return const SizedBox(
@@ -117,9 +117,9 @@ class _Content extends StatelessWidget {
                 SliverList(
                     delegate: SliverChildListDelegate([
                   MovieDetailsHero(
-                      name: movie!.title,
-                      releaseDate: movie.releaseDate,
-                      moviePoster: movie.posterPath),
+                      name: movie?.title,
+                      releaseDate: movie?.releaseDate,
+                      moviePoster: movie?.posterPath),
                   Container(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -129,13 +129,21 @@ class _Content extends StatelessWidget {
                           Text('Overview',
                               style: Theme.of(context).textTheme.headline2),
                           const SizedBox(height: 10),
-                          Text(movie.overview ?? '',
+                          Text(movie?.overview ?? '',
                               style: Theme.of(context).textTheme.headline4),
                         ]),
+                  ),
+                  Column(
+                    children: getGenre(movie?.genres ?? []),
                   )
-                ]))
+                ])),
               ],
             ));
     }
+  }
+
+  List<Text> getGenre(List<Genre> genres) {
+    print('-----------' + genres.toString());
+    return genres.map((e) => Text(e.name ?? '')).toList();
   }
 }

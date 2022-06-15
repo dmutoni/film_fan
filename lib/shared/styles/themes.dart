@@ -10,7 +10,7 @@ ThemeData defaultTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     headline1: TextStyle(
-        fontSize: 30, fontWeight: FontWeight.w600, color: kBlackColor),
+        fontSize: 25, fontWeight: FontWeight.w600, color: kBlackColor),
     headline2: TextStyle(
       fontFamily: 'NotoSans',
       fontSize: 18,

@@ -14,7 +14,7 @@ class MovieDetail extends Equatable {
   final String? imdbId;
   final String? overview;
   final String? releaseDate;
-  final List<Genre>? genreIds;
+  final List<Genre>? genres;
   final int? id;
   final String? originalTitle;
   final String? originalLanguage;
@@ -30,7 +30,7 @@ class MovieDetail extends Equatable {
       this.adult,
       this.overview,
       this.releaseDate,
-      this.genreIds,
+      this.genres,
       this.id,
       this.originalTitle,
       this.originalLanguage,
@@ -57,7 +57,7 @@ class MovieDetail extends Equatable {
         adult,
         overview,
         releaseDate,
-        genreIds,
+        genres,
         id,
         originalTitle,
         originalLanguage,
@@ -75,6 +75,7 @@ class MovieDetail extends Equatable {
 }
 
 // ignore: must_be_immutable
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Genre extends Equatable {
   int? id;
   String? name;
