@@ -99,6 +99,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  credits_api:
+    dependency: "direct main"
+    description:
+      path: "packages/credits/credits_api"
+      relative: true
+    source: path
+    version: "0.0.1"
+  credits_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/credits/credits_repository"
+      relative: true
+    source: path
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:

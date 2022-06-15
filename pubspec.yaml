@@ -23,6 +23,10 @@ dependencies:
     path: packages/movies/movie_api
   movie_repository: 
     path: packages/movies/movie_repository
+  credits_repository: 
+    path: packages/credits/credits_repository
+  credits_api:
+    path: packages/credits/credits_api
   flutter_bloc: ^8.0.1
 
 dev_dependencies:
