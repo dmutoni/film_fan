@@ -1,5 +1,6 @@
 import 'package:credits_api/credits_api.dart';
 import 'package:credits_repository/credits_repository.dart';
+import 'package:film_fan/constants/colors.dart';
 import 'package:film_fan/screens/credits/cubit/credit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,19 +70,28 @@ class _Content extends StatelessWidget {
       case CreditStatus.success:
         final List<Cast>? cast = credits!.cast;
         return Scaffold(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: kPrimaryColor,
             body: ListView(
               shrinkWrap: true,
               children: [
                 const Text('Cast',
-                    style: TextStyle(fontSize: 20, color: Colors.black)),
+                    style: TextStyle(fontSize: 20, color: kWhiteColor)),
                 ListView.builder(
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                        leading: const Icon(Icons.list),
-                        title: Text(cast![index].name!),
-                        subtitle: Text(cast[index].character!),
+                        leading: const Icon(
+                          Icons.list,
+                          color: kWhiteColor,
+                        ),
+                        title: Text(
+                          cast![index].name!,
+                          style: const TextStyle(color: kWhiteColor),
+                        ),
+                        subtitle: Text(
+                          cast[index].character!,
+                          style: const TextStyle(color: kWhiteColor),
+                        ),
                       );
                     },
                     itemCount: cast?.length),

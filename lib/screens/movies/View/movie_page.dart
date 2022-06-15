@@ -66,7 +66,7 @@ class _Content extends StatelessWidget {
         );
       case MovieStatus.success:
         return Scaffold(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          backgroundColor: kPrimaryColor,
           body: DefaultTabController(
               length: 2,
               child: NestedScrollView(
@@ -77,7 +77,7 @@ class _Content extends StatelessWidget {
                       toolbarHeight: 70,
                       pinned: true,
                       automaticallyImplyLeading: false,
-                      backgroundColor: kWhiteColor,
+                      backgroundColor: kPrimaryColor,
                       flexibleSpace: FlexibleSpaceBar(
                         background: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +94,7 @@ class _Content extends StatelessWidget {
                             ),
                             const Divider(
                               thickness: 2,
-                              color: kBlackColor,
+                              color: kRedColor,
                             )
                           ],
                         ),
@@ -103,7 +103,7 @@ class _Content extends StatelessWidget {
                         labelColor: Theme.of(context).colorScheme.secondary,
                         indicatorSize: TabBarIndicatorSize.tab,
                         indicator: MaterialIndicator(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: kRedColor,
                           height: 5,
                           topLeftRadius: 8,
                           topRightRadius: 8,

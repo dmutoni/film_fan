@@ -73,17 +73,17 @@ class _Content extends StatelessWidget {
         );
       case MovieDetailsStatus.success:
         return Scaffold(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: kPrimaryColor,
             body: CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(
-                  backgroundColor: kLightGreen,
+                  backgroundColor: kPrimaryColor,
                   pinned: true,
                   leading: IconButton(
                     icon: const Icon(
                       Icons.keyboard_arrow_left_outlined,
                       size: 30,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -104,6 +104,25 @@ class _Content extends StatelessWidget {
                       name: movie?.title,
                       releaseDate: movie?.releaseDate,
                       moviePoster: movie?.posterPath),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Row(
+                      children: [
+                        Row(
+                          children: movie!.genres!
+                              .map((e) => Container(
+                                  color: kRedColor,
+                                  padding: const EdgeInsets.all(12),
+                                  margin: const EdgeInsets.only(right: 8),
+                                  child: Text(
+                                    e.name!,
+                                    style: const TextStyle(color: kWhiteColor),
+                                  )))
+                              .toList(),
+                        )
+                      ],
+                    ),
+                  ),
                   Container(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -113,24 +132,9 @@ class _Content extends StatelessWidget {
                           Text('Overview',
                               style: Theme.of(context).textTheme.headline2),
                           const SizedBox(height: 10),
-                          Text(movie?.overview ?? '',
+                          Text(movie.overview ?? '',
                               style: Theme.of(context).textTheme.headline4),
                         ]),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Row(
-                      children: [
-                        Text('Genre',
-                            style: Theme.of(context).textTheme.headline2),
-                        const SizedBox(width: 10),
-                        Row(
-                          children: movie!.genres!
-                              .map((e) => Text(e.name! + ' | '))
-                              .toList(),
-                        )
-                      ],
-                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0),
@@ -150,6 +154,7 @@ class _Content extends StatelessWidget {
                     direction: Axis.horizontal,
                     allowHalfRating: true,
                     itemCount: 5,
+                    unratedColor: kWhiteColor,
                     itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                     itemBuilder: (context, _) => const Icon(
                       Icons.star,

@@ -6,16 +6,16 @@ ThemeData defaultTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: kPrimaryColor,
-    secondary: kBlackColor,
+    secondary: kRedColor,
   ),
   textTheme: const TextTheme(
-    headline1: TextStyle(
-        fontSize: 25, fontWeight: FontWeight.w600, color: kBlackColor),
+    headline1:
+        TextStyle(fontSize: 25, fontWeight: FontWeight.w600, color: kRedColor),
     headline2: TextStyle(
       fontFamily: 'NotoSans',
       fontSize: 18,
       fontWeight: FontWeight.w500,
-      color: kBlackColor,
+      color: kRedColor,
     ),
     headline4: TextStyle(
       fontFamily: 'NotoSansRegular',

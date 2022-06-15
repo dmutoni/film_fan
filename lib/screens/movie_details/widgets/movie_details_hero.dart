@@ -1,3 +1,4 @@
+import 'package:film_fan/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsHero extends StatelessWidget {
@@ -12,7 +13,7 @@ class MovieDetailsHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(243, 249, 239, 1),
+      color: kPrimaryColor,
       height: MediaQuery.of(context).size.height / 4,
       child: Row(
         children: [
