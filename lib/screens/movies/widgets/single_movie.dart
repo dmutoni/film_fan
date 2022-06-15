@@ -2,10 +2,10 @@ import 'package:film_fan/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class SingleMovie extends StatelessWidget {
-  final String title;
-  final String releaseDate;
-  final String voteAverage;
-  final String moviePoster;
+  final String? title;
+  final String? releaseDate;
+  final String? voteAverage;
+  final String? moviePoster;
   const SingleMovie(
       {Key? key,
       required this.title,
@@ -37,7 +37,7 @@ class SingleMovie extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 7,
               width: double.infinity,
               color: kGreyColor,
-              child: Image.network(moviePoster),
+              child: Image.network(moviePoster!),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8),
@@ -47,13 +47,13 @@ class SingleMovie extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  Text(title, style: Theme.of(context).textTheme.bodyText2),
+                  Text(title!, style: Theme.of(context).textTheme.bodyText2),
                   Text(
-                    releaseDate,
+                    releaseDate!,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   const SizedBox(height: 8),
-                  Text(voteAverage,
+                  Text(voteAverage!,
                       style: Theme.of(context).textTheme.bodyText2),
                   const SizedBox(height: 8),
                 ],

@@ -13,7 +13,7 @@ class MovieState extends Equatable {
   final MovieStatus status;
   final MovieModel? movieModel;
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [status, movieModel];
 }
 
 class MovieInitial extends MovieState {}

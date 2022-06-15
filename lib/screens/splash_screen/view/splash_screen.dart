@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         () => {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const MoviePage(),
+                  builder: (context) => const HomePage(),
                 ),
               )
             });

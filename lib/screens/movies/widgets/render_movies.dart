@@ -1,17 +1,34 @@
-// import 'package:flutter/material.dart';
-// import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
-// import 'package:responsive_grid_list/responsive_grid_list.dart';
+import 'package:film_fan/screens/movies/cubit/movie_cubit.dart';
+import 'package:film_fan/screens/movies/widgets/single_movie.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
+import 'package:movie_api/movie_api.dart';
+import 'package:responsive_grid_list/responsive_grid_list.dart';
 
-// class RenderMovies extends StatelessWidget {
-//   const RenderMovies({Key? key}) : super(key: key);
+class RenderMovies extends StatelessWidget {
+  const RenderMovies({Key? key, this.movies}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return LazyLoadScrollView(
-//       child: ResponsiveGridList(
-//         horizontalGridMargin: 10,
-//         verticalGridMargin: 2,
-//       ),
-//     )
-//   }
-// }
+  final MovieModel? movies;
+
+  @override
+  Widget build(BuildContext context) {
+    return LazyLoadScrollView(
+      child: ResponsiveGridList(
+        horizontalGridMargin: 10,
+        verticalGridMargin: 2,
+        minItemWidth: 112,
+        children: List.generate(movies!.results!.length, (index) {
+          final movie = movies!.results?[index];
+          return SingleMovie(
+            title: movie?.title,
+            releaseDate: movie?.releaseDate,
+            voteAverage: movie?.voteAverage.toString(),
+            moviePoster: movie?.posterPath,
+          );
+        }),
+      ),
+      onEndOfPage: () => {context.read<MovieCubit>().fetchAllMovies()},
+    );
+  }
+}

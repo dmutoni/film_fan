@@ -12,8 +12,10 @@ class MovieRepository {
 
   Future<MovieModel>? fetchAllMovies() {
     try {
+      print(_movieApiClient.fetchAllMovies());
       return _movieApiClient.fetchAllMovies();
-    } on Exception {
+    } catch (error) {
+      print(error);
       throw MovieException();
     }
   }

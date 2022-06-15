@@ -33,12 +33,17 @@ class MovieApiClient {
   final http.Client _client;
 
   Future<MovieModel> fetchAllMovies() async {
-    final uri = Uri.https(authority,
-        '/3/movie/now_playing?api_key=f0760d61c4bc8ae2e06246d60622ae47&language=en-US&page=1');
-    final response = await _client.get(uri);
+    final Map<String, String> queryParameters = {
+      'api_key': 'f0760d61c4bc8ae2e06246d60622ae47',
+      'language': 'en-US',
+      'page': '1',
+    };
+    final uri = Uri.https(authority, '/3/movie/now_playing', queryParameters);
+    final responseBody = await _get(uri);
+
     try {
-      return MovieModel.fromJson(json.decode(response.body));
-    } catch (_) {
+      return MovieModel.fromJson(responseBody);
+    } catch (e) {
       throw JsonDeserializationException();
     }
   }
@@ -57,7 +62,7 @@ class MovieApiClient {
     }
     try {
       return json.decode(response.body) as Map<String, dynamic>;
-    } catch (_) {
+    } catch (e) {
       throw JsonDecodeException();
     }
   }

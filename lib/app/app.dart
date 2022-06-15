@@ -14,11 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider<MovieRepository>(
-          create: (_) => _movieRepository,
-        ),
-      ],
+      providers: [RepositoryProvider.value(value: _movieRepository)],
       child: const AppView(),
     );
   }
