@@ -1,5 +1,6 @@
 name: credits_repository
 description: A new Flutter package project.
+publish_to: none
 version: 0.0.1
 homepage:
 
@@ -10,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  credits_api:
+    path: ../credits_api
 
 dev_dependencies:
   flutter_test:
