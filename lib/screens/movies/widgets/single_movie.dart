@@ -9,6 +9,7 @@ class SingleMovie extends StatelessWidget {
   final String? moviePoster;
   final String? rating;
   final List<int>? genre;
+  final String? overview;
 
   const SingleMovie(
       {Key? key,
@@ -17,6 +18,7 @@ class SingleMovie extends StatelessWidget {
       this.voteAverage,
       this.moviePoster,
       this.rating,
+      this.overview,
       this.genre})
       : super(key: key);
 
@@ -29,7 +31,7 @@ class SingleMovie extends StatelessWidget {
             builder: (context) => MovieDetailsPage(
               movieTitle: title,
               movieGenres: genre,
-              movieOverview: voteAverage,
+              movieOverview: overview,
               moviePoster: moviePoster,
               movieRating: rating,
               movieReleaseDate: releaseDate,

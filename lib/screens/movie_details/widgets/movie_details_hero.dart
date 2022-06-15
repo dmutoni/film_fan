@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class MovieDetailsHero extends StatelessWidget {
   final String? name;
-  final String? genre;
+  final String? releaseDate;
   final String? moviePoster;
 
-  const MovieDetailsHero({Key? key, this.name, this.genre, this.moviePoster})
+  const MovieDetailsHero(
+      {Key? key, this.name, this.releaseDate, this.moviePoster})
       : super(key: key);
 
   @override
@@ -30,7 +31,7 @@ class MovieDetailsHero extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline1,
                     ),
                     Text(
-                      'Genre: $genre',
+                      'releaseDate: $releaseDate',
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ],

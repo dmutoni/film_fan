@@ -55,8 +55,21 @@ class MovieDetailsPage extends StatelessWidget {
                 delegate: SliverChildListDelegate([
               MovieDetailsHero(
                   name: movieTitle,
-                  genre: movieGenres.toString(),
-                  moviePoster: moviePoster)
+                  releaseDate: movieReleaseDate,
+                  moviePoster: moviePoster),
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Overview',
+                          style: Theme.of(context).textTheme.headline2),
+                      const SizedBox(height: 10),
+                      Text(movieOverview!,
+                          style: Theme.of(context).textTheme.headline4),
+                    ]),
+              )
             ]))
           ],
         ));
