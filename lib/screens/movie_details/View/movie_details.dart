@@ -1,10 +1,12 @@
 import 'package:film_fan/constants/colors.dart';
-import 'package:film_fan/screens/credits/view/credit_page.dart';
 import 'package:film_fan/screens/movie_details/cubit/movie_details_cubit.dart';
 import 'package:film_fan/screens/movie_details/widgets/movie_details_hero.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_repository/movie_repository.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
+import '../../credits/view/credit_page.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   final int? id;
@@ -140,6 +142,21 @@ class _Content extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline4),
                       ],
                     ),
+                  ),
+                  RatingBar.builder(
+                    initialRating: 3,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
                   ),
                   Container(
                     height: 200,
