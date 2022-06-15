@@ -26,6 +26,8 @@ class RenderMovies extends StatelessWidget {
             releaseDate: movie?.releaseDate,
             voteAverage: movie?.voteAverage.toString(),
             moviePoster: movie?.posterPath,
+            rating: movie?.voteAverage.toString(),
+            genre: movie?.genreIds,
           );
         }),
       ),

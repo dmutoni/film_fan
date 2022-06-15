@@ -1,4 +1,5 @@
 import 'package:film_fan/constants/colors.dart';
+import 'package:film_fan/screens/movie_details/View/movie_details.dart';
 import 'package:flutter/material.dart';
 
 class SingleMovie extends StatelessWidget {
@@ -6,24 +7,36 @@ class SingleMovie extends StatelessWidget {
   final String? releaseDate;
   final String? voteAverage;
   final String? moviePoster;
+  final String? rating;
+  final List<int>? genre;
 
   const SingleMovie(
       {Key? key,
-      required this.title,
-      required this.releaseDate,
-      required this.voteAverage,
-      required this.moviePoster})
+      this.title,
+      this.releaseDate,
+      this.voteAverage,
+      this.moviePoster,
+      this.rating,
+      this.genre})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => PokemonDetailsPage(name: name),
-        //   ),
-        // );
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MovieDetailsPage(
+              movieTitle: title,
+              movieGenres: genre,
+              movieOverview: voteAverage,
+              moviePoster: moviePoster,
+              movieRating: rating,
+              movieReleaseDate: releaseDate,
+              movieVoteAverage: voteAverage,
+            ),
+          ),
+        );
       },
       child: Container(
         key: const Key('movie_View_Success'),
@@ -35,7 +48,7 @@ class SingleMovie extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height / 7,
+              height: MediaQuery.of(context).size.height / 5,
               width: double.infinity,
               color: kGreyColor,
               child: Image.network(
