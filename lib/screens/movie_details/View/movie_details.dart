@@ -1,5 +1,6 @@
 import 'package:film_fan/constants/colors.dart';
 import 'package:film_fan/screens/movie_details/cubit/movie_details_cubit.dart';
+import 'package:film_fan/screens/movie_details/cubit/rating_cubit.dart';
 import 'package:film_fan/screens/movie_details/widgets/movie_details_hero.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -155,12 +156,15 @@ class _Content extends StatelessWidget {
                       color: Colors.amber,
                     ),
                     onRatingUpdate: (rating) {
-                      print(rating);
+                      RatingCubit(
+                          id: movie.id,
+                          value: rating.round(),
+                          movieRepository: context.read<MovieRepository>());
                     },
                   ),
                   Container(
-                    height: 200,
-                    padding: const EdgeInsets.all(16.0),
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    padding: const EdgeInsets.all(16),
                     child: CreditPage(id: movie.id),
                   )
                 ])),

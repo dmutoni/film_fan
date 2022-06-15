@@ -63,6 +63,24 @@ class MovieApiClient {
     }
   }
 
+  Future<void> rateMovie({required int id, required int value}) async {
+    final Map<String, String> queryParameters = {
+      'api_key': 'f0760d61c4bc8ae2e06246d60622ae47'
+    };
+    final url = Uri.https(authority, '/3/movie/$id/rating', queryParameters);
+
+    final response = await _client.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{'value': value.toString()}));
+    if (response.statusCode == 201) {
+      return;
+    } else {
+      throw HttpRequestFailure(response.statusCode);
+    }
+  }
+
   Future<Map<String, dynamic>> _get(Uri uri) async {
     http.Response response;
 

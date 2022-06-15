@@ -18,6 +18,17 @@ class MovieRepository {
     }
   }
 
+  Future<void> rateMovie(int id, int value) {
+    try {
+      return _movieApiClient.rateMovie(
+        id: id,
+        value: value,
+      );
+    } catch (error) {
+      throw MovieException();
+    }
+  }
+
   Future<MovieDetail>? searchMovies(int id) {
     try {
       return _movieApiClient.getOneMovieDetails(id);
