@@ -1,4 +1,4 @@
-library actors_api;
+library credits_repository;
 
 /// A Calculator.
 class Calculator {

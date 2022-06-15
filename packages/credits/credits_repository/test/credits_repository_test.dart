@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:actors_repository/actors_repository.dart';
+import 'package:credits_repository/credits_repository.dart';
 
 void main() {
   test('adds one to input values', () {

@@ -252,14 +252,14 @@ packages:
   movie_api:
     dependency: "direct main"
     description:
-      path: "packages/movie_api"
+      path: "packages/movies/movie_api"
       relative: true
     source: path
     version: "0.0.1"
   movie_repository:
     dependency: "direct main"
     description:
-      path: "packages/movie_repository"
+      path: "packages/movies/movie_repository"
       relative: true
     source: path
     version: "0.0.1"

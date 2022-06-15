@@ -20,9 +20,9 @@ dependencies:
   equatable: ^2.0.3
   bloc: ^8.0.3
   movie_api:
-    path: packages/movie_api
+    path: packages/movies/movie_api
   movie_repository: 
-    path: packages/movie_repository
+    path: packages/movies/movie_repository
   flutter_bloc: ^8.0.1
 
 dev_dependencies:

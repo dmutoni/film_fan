@@ -3,7 +3,6 @@ import 'package:film_fan/screens/movie_details/cubit/movie_details_cubit.dart';
 import 'package:film_fan/screens/movie_details/widgets/movie_details_hero.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_api/movie_api.dart';
 import 'package:movie_repository/movie_repository.dart';
 
 class MovieDetailsPage extends StatelessWidget {
@@ -133,17 +132,36 @@ class _Content extends StatelessWidget {
                               style: Theme.of(context).textTheme.headline4),
                         ]),
                   ),
-                  Column(
-                    children: getGenre(movie?.genres ?? []),
-                  )
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Row(
+                      children: [
+                        Text('Genre',
+                            style: Theme.of(context).textTheme.headline2),
+                        const SizedBox(width: 10),
+                        Row(
+                          children: movie!.genres!
+                              .map((e) => Text(e.name! + ' | '))
+                              .toList(),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Row(
+                      children: [
+                        Text('Ratings',
+                            style: Theme.of(context).textTheme.headline2),
+                        const SizedBox(width: 10),
+                        Text(movie.voteAverage!.toString(),
+                            style: Theme.of(context).textTheme.headline4),
+                      ],
+                    ),
+                  ),
                 ])),
               ],
             ));
     }
-  }
-
-  List<Text> getGenre(List<Genre> genres) {
-    print('-----------' + genres.toString());
-    return genres.map((e) => Text(e.name ?? '')).toList();
   }
 }
