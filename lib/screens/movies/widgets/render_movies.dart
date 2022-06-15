@@ -13,6 +13,7 @@ class RenderMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    movies!.results!.sort((a, b) => a.title!.compareTo(b.title!));
     return LazyLoadScrollView(
       child: ResponsiveGridList(
         horizontalGridMargin: 10,

@@ -6,6 +6,7 @@ class SingleMovie extends StatelessWidget {
   final String? releaseDate;
   final String? voteAverage;
   final String? moviePoster;
+
   const SingleMovie(
       {Key? key,
       required this.title,
@@ -37,7 +38,8 @@ class SingleMovie extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 7,
               width: double.infinity,
               color: kGreyColor,
-              child: Image.network(moviePoster!),
+              child: Image.network(
+                  'https://image.tmdb.org/t/p/w500/' + moviePoster!),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8),
