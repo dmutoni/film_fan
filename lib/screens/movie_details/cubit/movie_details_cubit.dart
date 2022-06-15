@@ -14,7 +14,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   final MovieRepository _movieRepository;
   final int? _id;
 
-  Future<void> fetchPokemonDetails() async {
+  Future<void> fetchMovieDetails() async {
     emit(MovieDetailsState(
         status: MovieDetailsStatus.loading, movieDetails: state.movieDetails));
 

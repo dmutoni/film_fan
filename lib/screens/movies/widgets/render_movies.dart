@@ -22,6 +22,7 @@ class RenderMovies extends StatelessWidget {
         children: List.generate(movies!.results!.length, (index) {
           final movie = movies!.results?[index];
           return SingleMovie(
+            id: movie?.id,
             title: movie?.title,
             releaseDate: movie?.releaseDate,
             voteAverage: movie?.voteAverage.toString(),

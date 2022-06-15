@@ -20,7 +20,7 @@ class MovieRepository {
     }
   }
 
-  Future<MovieDetailModel>? searchMovies(int id) {
+  Future<MovieDetail>? searchMovies(int id) {
     try {
       return _movieApiClient.getOneMovieDetails(id);
     } on Exception {

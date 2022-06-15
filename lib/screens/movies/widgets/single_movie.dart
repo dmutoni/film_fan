@@ -3,6 +3,7 @@ import 'package:film_fan/screens/movie_details/View/movie_details.dart';
 import 'package:flutter/material.dart';
 
 class SingleMovie extends StatelessWidget {
+  final int? id;
   final String? title;
   final String? releaseDate;
   final String? voteAverage;
@@ -13,6 +14,7 @@ class SingleMovie extends StatelessWidget {
 
   const SingleMovie(
       {Key? key,
+      this.id,
       this.title,
       this.releaseDate,
       this.voteAverage,
@@ -29,13 +31,7 @@ class SingleMovie extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => MovieDetailsPage(
-              movieTitle: title,
-              movieGenres: genre,
-              movieOverview: overview,
-              moviePoster: moviePoster,
-              movieRating: rating,
-              movieReleaseDate: releaseDate,
-              movieVoteAverage: voteAverage,
+              id: id,
             ),
           ),
         );

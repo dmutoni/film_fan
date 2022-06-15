@@ -11,7 +11,7 @@ class MovieDetailsState extends Equatable {
   const MovieDetailsState(
       {this.status = MovieDetailsStatus.initial, this.movieDetails});
   final MovieDetailsStatus status;
-  final MovieDetailModel? movieDetails;
+  final MovieDetail? movieDetails;
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [status, movieDetails];
 }

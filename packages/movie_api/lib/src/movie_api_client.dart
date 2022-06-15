@@ -48,7 +48,7 @@ class MovieApiClient {
     }
   }
 
-  Future<MovieDetailModel> getOneMovieDetails(int id) async {
+  Future<MovieDetail> getOneMovieDetails(int id) async {
     final Map<String, String> queryParameters = {
       'api_key': 'f0760d61c4bc8ae2e06246d60622ae47',
       'language': 'en-US',
@@ -56,9 +56,8 @@ class MovieApiClient {
     };
     final uri = Uri.https(authority, '/3/movie/$id', queryParameters);
     final responseBody = await _get(uri);
-
     try {
-      return MovieDetailModel.fromJson(responseBody);
+      return MovieDetail.fromJson(responseBody);
     } catch (e) {
       throw JsonDeserializationException();
     }
