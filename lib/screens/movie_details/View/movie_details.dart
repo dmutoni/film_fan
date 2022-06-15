@@ -38,10 +38,22 @@ class MovieDetailsView extends StatelessWidget {
   }
 }
 
-class _Content extends StatelessWidget {
+class _Content extends StatefulWidget {
   final String? id;
 
   const _Content({Key? key, this.id}) : super(key: key);
+
+  @override
+  State<_Content> createState() => _ContentState();
+}
+
+class _ContentState extends State<_Content> {
+  bool _hasBeenPressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,108 +85,137 @@ class _Content extends StatelessWidget {
         );
       case MovieDetailsStatus.success:
         return Scaffold(
-            backgroundColor: kPrimaryColor,
-            body: CustomScrollView(
-              slivers: <Widget>[
-                SliverAppBar(
-                  backgroundColor: kPrimaryColor,
-                  pinned: true,
-                  leading: IconButton(
-                    icon: const Icon(
-                      Icons.keyboard_arrow_left_outlined,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+          backgroundColor: kPrimaryColor,
+          body: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                backgroundColor: kPrimaryColor,
+                pinned: true,
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.keyboard_arrow_left_outlined,
+                    size: 30,
+                    color: Colors.white,
                   ),
-                  elevation: 0,
-                  bottom: PreferredSize(
-                    preferredSize: const Size.fromHeight(4),
-                    child: Container(
-                      color: kLightGreyColor,
-                      height: 2,
-                    ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                elevation: 0,
+                bottom: PreferredSize(
+                  preferredSize: const Size.fromHeight(4),
+                  child: Container(
+                    color: kLightGreyColor,
+                    height: 2,
                   ),
                 ),
-                SliverList(
-                    delegate: SliverChildListDelegate([
-                  MovieDetailsHero(
-                      name: movie?.title,
-                      releaseDate: movie?.releaseDate,
-                      moviePoster: movie?.posterPath),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Row(
-                      children: [
-                        Row(
-                          children: movie!.genres!
-                              .map((e) => Container(
-                                  color: kRedColor,
-                                  padding: const EdgeInsets.all(12),
-                                  margin: const EdgeInsets.only(right: 8),
-                                  child: Text(
-                                    e.name!,
-                                    style: const TextStyle(color: kWhiteColor),
-                                  )))
-                              .toList(),
-                        )
-                      ],
-                    ),
+              ),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                MovieDetailsHero(
+                    name: movie?.title,
+                    releaseDate: movie?.releaseDate,
+                    moviePoster: movie?.posterPath),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Row(
+                    children: [
+                      Row(
+                        children: movie!.genres!
+                            .map((e) => Container(
+                                color: kRedColor,
+                                padding: const EdgeInsets.all(12),
+                                margin: const EdgeInsets.only(right: 8),
+                                child: Text(
+                                  e.name!,
+                                  style: const TextStyle(color: kWhiteColor),
+                                )))
+                            .toList(),
+                      )
+                    ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Overview',
-                              style: Theme.of(context).textTheme.headline2),
-                          const SizedBox(height: 10),
-                          Text(movie.overview ?? '',
-                              style: Theme.of(context).textTheme.headline4),
-                        ]),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Row(
+                ),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Ratings',
+                        Text('Overview',
                             style: Theme.of(context).textTheme.headline2),
-                        const SizedBox(width: 10),
-                        Text(movie.voteAverage!.toString(),
+                        const SizedBox(height: 10),
+                        Text(movie.overview ?? '',
                             style: Theme.of(context).textTheme.headline4),
-                      ],
-                    ),
+                      ]),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Row(
+                    children: [
+                      Text('Ratings',
+                          style: Theme.of(context).textTheme.headline2),
+                      const SizedBox(width: 10),
+                      Text(movie.voteAverage!.toString(),
+                          style: Theme.of(context).textTheme.headline4),
+                    ],
                   ),
-                  RatingBar.builder(
-                    initialRating: 3,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    unratedColor: kWhiteColor,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      RatingCubit(
-                          id: movie.id,
-                          value: rating.round(),
-                          movieRepository: context.read<MovieRepository>());
-                    },
+                ),
+                RatingBar.builder(
+                  initialRating: 3,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  unratedColor: kWhiteColor,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    padding: const EdgeInsets.all(16),
-                    child: CreditPage(id: movie.id),
+                  onRatingUpdate: (rating) {
+                    RatingCubit(
+                        id: movie.id,
+                        value: rating.round(),
+                        movieRepository: context.read<MovieRepository>());
+                  },
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  padding: const EdgeInsets.all(16),
+                  child: CreditPage(id: movie.id),
+                )
+              ])),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              setState(() {
+                _hasBeenPressed = !_hasBeenPressed;
+              });
+              // if (_hasBeenPressed) {
+              //   _addInfo(const PokemonDetails(1, 'widget.name'));
+              // } else {
+              //   _removePokemonFromStorage(pokemon);
+              // }
+            },
+            label: _hasBeenPressed
+                ? const Text(
+                    'Remove from favorite',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: kWhiteColor),
                   )
-                ])),
-              ],
-            ));
+                : const Text(
+                    'Mark as favorite',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: kWhiteColor),
+                  ),
+            backgroundColor: _hasBeenPressed
+                ? Theme.of(context).colorScheme.primary
+                : kRedColor,
+          ),
+        );
     }
   }
 }

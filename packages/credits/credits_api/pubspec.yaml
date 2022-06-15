@@ -9,6 +9,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  bloc_test: ^9.0.3
   equatable: ^2.0.3
   flutter:
     sdk: flutter
@@ -16,6 +17,8 @@ dependencies:
   http: ^0.13.4
   json_annotation: ^4.5.0
   json_serializable: ^6.2.0
+  mockingjay: ^0.3.0
+  mocktail: ^0.3.0
 
 dev_dependencies:
   flutter_test:
