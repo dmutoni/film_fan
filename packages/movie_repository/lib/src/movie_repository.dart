@@ -19,11 +19,12 @@ class MovieRepository {
       throw MovieException();
     }
   }
-  // Future<MovieModel>? searchMovies(String query) {
-  //   try {
-  //     return _movieApiClient.(query);
-  //   } on Exception {
-  //     throw SearchException();
-  //   }
-  // }
+
+  Future<MovieDetailModel>? searchMovies(int id) {
+    try {
+      return _movieApiClient.getOneMovieDetails(id);
+    } on Exception {
+      throw SearchException();
+    }
+  }
 }
