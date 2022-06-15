@@ -1,13 +1,13 @@
 part of 'movie_cubit.dart';
 
-enum MovieState {
+enum MovieStatus {
   initial,
   loading,
-  loaded,
+  success,
   error,
 }
 
-abstract class MovieState extends Equatable {
+class MovieState extends Equatable {
   const MovieState({this.status = MovieStatus.initial, this.movieModel});
 
   final MovieStatus status;
