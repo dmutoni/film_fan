@@ -54,7 +54,7 @@ class MoviePage extends StatelessWidget {
                     tabs: [
                       Tab(
                         icon: Text(
-                          'All Pokemons',
+                          'All Movies',
                           style: Theme.of(context).textTheme.headline2,
                         ),
                       ),
