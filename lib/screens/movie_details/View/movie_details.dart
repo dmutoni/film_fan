@@ -4,6 +4,8 @@ import 'package:film_fan/screens/movie_details/cubit/rating_cubit.dart';
 import 'package:film_fan/screens/movie_details/widgets/movie_details_hero.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:movie_api/movie_api.dart';
 import 'package:movie_repository/movie_repository.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -48,11 +50,23 @@ class _Content extends StatefulWidget {
 }
 
 class _ContentState extends State<_Content> {
+  final LocalStorage storage = LocalStorage('movie_fan');
   bool _hasBeenPressed = false;
 
   @override
   void initState() {
     super.initState();
+  }
+
+  _addInfo(movie) async {
+    if (!_hasBeenPressed) {
+      _hasBeenPressed = true;
+      await storage.setItem('movie_${movie.id}', movie.toJson());
+    }
+  }
+
+  _removeMovieFromStorage(movie) async {
+    await storage.deleteItem('movie_${movie.id}');
   }
 
   @override
@@ -192,11 +206,18 @@ class _ContentState extends State<_Content> {
               setState(() {
                 _hasBeenPressed = !_hasBeenPressed;
               });
-              // if (_hasBeenPressed) {
-              //   _addInfo(const PokemonDetails(1, 'widget.name'));
-              // } else {
-              //   _removePokemonFromStorage(pokemon);
-              // }
+              if (_hasBeenPressed) {
+                _addInfo(MovieDetail(
+                    id: movie.id,
+                    title: movie.title,
+                    posterPath: movie.posterPath,
+                    releaseDate: movie.releaseDate,
+                    overview: movie.overview,
+                    genres: movie.genres,
+                    voteAverage: movie.voteAverage));
+              } else {
+                _removeMovieFromStorage(movie);
+              }
             },
             label: _hasBeenPressed
                 ? const Text(
