@@ -66,5 +66,48 @@ void main() {
         throwsA(isA<HttpException>()),
       );
     });
+    test(
+      'throws HttpRequestFailure when response status code is not 200',
+      () {
+        when(() => httpClient.get(movieUri)).thenAnswer(
+          (_) async => http.Response('', 400),
+        );
+
+        expect(
+          () => subject.fetchAllMovies(),
+          throwsA(
+            isA<HttpRequestFailure>()
+                .having((error) => error.statusCode, 'statusCode', 400),
+          ),
+        );
+      },
+    );
+    test(
+      'throws JsonDecodeException when decoding response fails',
+      () {
+        when(() => httpClient.get(movieUri)).thenAnswer(
+          (_) async => http.Response('definitely not json!', 200),
+        );
+
+        expect(
+          () => subject.fetchAllMovies(),
+          throwsA(isA<JsonDecodeException>()),
+        );
+      },
+    );
+    test('makes correct request', () async {
+      await subject.fetchAllMovies();
+
+      verify(
+        () => httpClient.get(movieUri),
+      ).called(1);
+    });
+
+    test('returns correct list of movies', () {
+      expect(
+        subject.fetchAllMovies(),
+        completion(equals(moviesModel)),
+      );
+    });
   });
 }
