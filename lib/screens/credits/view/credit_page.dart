@@ -58,9 +58,9 @@ class _Content extends StatelessWidget {
         );
       case CreditStatus.failure:
         return const Center(
-          key: Key("pokemonsView_failure_text"),
+          key: Key("moviessView_failure_text"),
           child: Text(
-            "Failed to load pokemons",
+            "Failed to load moviess",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
