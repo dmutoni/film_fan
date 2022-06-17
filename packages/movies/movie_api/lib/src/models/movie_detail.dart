@@ -8,7 +8,6 @@ part 'movie_detail.g.dart';
 class MovieDetail extends Equatable {
   final String? posterPath;
   final bool? adult;
-  final String? backdropAuth;
   final int? budget;
   final String? homepage;
   final String? imdbId;
@@ -26,7 +25,7 @@ class MovieDetail extends Equatable {
   final double? voteAverage;
 
   const MovieDetail(
-      this.posterPath,
+      {this.posterPath,
       this.adult,
       this.overview,
       this.releaseDate,
@@ -40,10 +39,9 @@ class MovieDetail extends Equatable {
       this.voteCount,
       this.video,
       this.voteAverage,
-      this.backdropAuth,
       this.budget,
       this.homepage,
-      this.imdbId);
+      this.imdbId});
 
   /// Deserializes the given [JsonMap] into a [Movie].
   static MovieDetail fromJson(JsonMap json) => _$MovieDetailFromJson(json);
@@ -67,7 +65,6 @@ class MovieDetail extends Equatable {
         voteCount,
         video,
         voteAverage,
-        backdropAuth,
         budget,
         homepage,
         imdbId

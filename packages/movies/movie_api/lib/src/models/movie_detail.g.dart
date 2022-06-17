@@ -7,33 +7,31 @@ part of 'movie_detail.dart';
 // **************************************************************************
 
 MovieDetail _$MovieDetailFromJson(Map<String, dynamic> json) => MovieDetail(
-      json['poster_path'] as String?,
-      json['adult'] as bool?,
-      json['overview'] as String?,
-      json['release_date'] as String?,
-      (json['genres'] as List<dynamic>?)
+      posterPath: json['poster_path'] as String?,
+      adult: json['adult'] as bool?,
+      overview: json['overview'] as String?,
+      releaseDate: json['release_date'] as String?,
+      genres: (json['genres'] as List<dynamic>?)
           ?.map((e) => Genre.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['id'] as int?,
-      json['original_title'] as String?,
-      json['original_language'] as String?,
-      json['title'] as String?,
-      json['backdrop_path'] as String?,
-      (json['popularity'] as num?)?.toDouble(),
-      json['vote_count'] as int?,
-      json['video'] as bool?,
-      (json['vote_average'] as num?)?.toDouble(),
-      json['backdrop_auth'] as String?,
-      json['budget'] as int?,
-      json['homepage'] as String?,
-      json['imdb_id'] as String?,
+      id: json['id'] as int?,
+      originalTitle: json['original_title'] as String?,
+      originalLanguage: json['original_language'] as String?,
+      title: json['title'] as String?,
+      backdropPath: json['backdrop_path'] as String?,
+      popularity: (json['popularity'] as num?)?.toDouble(),
+      voteCount: json['vote_count'] as int?,
+      video: json['video'] as bool?,
+      voteAverage: (json['vote_average'] as num?)?.toDouble(),
+      budget: json['budget'] as int?,
+      homepage: json['homepage'] as String?,
+      imdbId: json['imdb_id'] as String?,
     );
 
 Map<String, dynamic> _$MovieDetailToJson(MovieDetail instance) =>
     <String, dynamic>{
       'poster_path': instance.posterPath,
       'adult': instance.adult,
-      'backdrop_auth': instance.backdropAuth,
       'budget': instance.budget,
       'homepage': instance.homepage,
       'imdb_id': instance.imdbId,

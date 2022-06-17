@@ -45,19 +45,19 @@ class _Content extends StatelessWidget {
     switch (status) {
       case MovieStatus.initial:
         return const SizedBox(
-          key: Key('initial'),
+          key: Key('movieView_initial_sizedBox'),
           child: Text('Loading...'),
         );
       case MovieStatus.loading:
         return const SizedBox(
-          key: Key('loading'),
+          key: Key('movieView_loading_indicator'),
           child: Center(child: CircularProgressIndicator.adaptive()),
         );
       case MovieStatus.error:
         return const Center(
-          key: Key("pokemonsView_failure_text"),
+          key: Key("movieView_error_indicator"),
           child: Text(
-            "Failed to load pokemons",
+            "Failed to load movies",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -66,6 +66,7 @@ class _Content extends StatelessWidget {
         );
       case MovieStatus.success:
         return Scaffold(
+          key: const Key('movieView_success_scaffold'),
           backgroundColor: kPrimaryColor,
           body: DefaultTabController(
               length: 2,
