@@ -1,10 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:mockingjay/mockingjay.dart';
+
+class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  test('adds one to input values', () {
-    // final calculator = Calculator();
-    // expect(calculator.addOne(2), 3);
-    // expect(calculator.addOne(-7), -6);
-    // expect(calculator.addOne(0), 1);
+  late Uri movieUri;
+  group("MovieApiClient", () {
+    late http.Client httpClient;
+    // late MovieA movieApiClient;
   });
 }

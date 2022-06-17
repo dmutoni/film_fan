@@ -16,6 +16,7 @@ dependencies:
   http: ^0.13.4
   json_annotation: ^4.5.0
   json_serializable: ^6.2.0
+  mockingjay: ^0.3.0
 
 dev_dependencies:
   flutter_test:
