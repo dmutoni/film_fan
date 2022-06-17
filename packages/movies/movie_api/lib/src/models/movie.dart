@@ -6,7 +6,7 @@ part 'movie.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Movie extends Equatable {
-  const Movie([
+  const Movie({
     this.id,
     this.title,
     this.posterPath,
@@ -21,7 +21,7 @@ class Movie extends Equatable {
     this.popularity,
     this.video,
     this.originalTitle,
-  ]);
+  });
 
   final String? posterPath;
   final bool? adult;

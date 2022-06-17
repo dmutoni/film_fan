@@ -334,14 +334,14 @@ packages:
     source: hosted
     version: "1.0.2"
   mockingjay:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: mockingjay
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
   mocktail:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: mocktail
       url: "https://pub.dartlang.org"

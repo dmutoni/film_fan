@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_api/movie_api.dart';
 import 'package:movie_repository/movie_repository.dart';
+import 'package:bloc_test/bloc_test.dart';
 
 class MockMovieRepository extends Mock implements MovieRepository {}
 
@@ -39,8 +40,28 @@ void main() {
       expect(MovieCubit(movieRepository: movieRepository).state,
           const MovieState(status: MovieStatus.initial));
     });
+    group(".fetchAllMovies", () {
+      blocTest<MovieCubit, MovieState>(
+        'emits state when with update movies',
+        build: () => MovieCubit(movieRepository: movieRepository),
+        act: (cubit) => cubit.fetchAllMovies(),
+        expect: () => [
+          const MovieState(status: MovieStatus.loading),
+          MovieState(status: MovieStatus.success, movieModel: moviesModel),
+        ],
+      );
+      blocTest<MovieCubit, MovieState>(
+        'emits error when repository throws exception',
+        build: () {
+          when(() => movieRepository.fetchAllMovies()).thenThrow(Exception());
+          return MovieCubit(movieRepository: movieRepository);
+        },
+        act: (cubit) => cubit.fetchAllMovies(),
+        expect: () => const [
+          MovieState(status: MovieStatus.loading),
+          MovieState(status: MovieStatus.error),
+        ],
+      );
+    });
   });
-  group(".fetchAllMovies", () {
-    
-  })
 }
